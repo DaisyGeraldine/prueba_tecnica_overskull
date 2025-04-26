@@ -16,56 +16,106 @@ class ListPage extends StatelessWidget {
           final list = listController.listData;
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Lista de elementos'),
+              title: const Text(
+                'Lista de elementos',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
               centerTitle: true,
-              backgroundColor: Colors.blue,
-              // leading: IconButton(
-              //   icon: const Icon(Icons.arrow_back),
-              //   onPressed: () {
-              //     Navigator.of(context).pop();
-              //   },
-              // ),
+              backgroundColor: Colors.deepPurple,
             ),
-            body: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      'Rick and Morty',
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    const SizedBox(height: 20),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: list.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const DetailPage(),
-                                ),
-                              );
-                            },
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.blue,
-                              radius: 30,
-                              child: Image(image:
-                                NetworkImage(list[index]['image'])),
+            body: listController.isLoading
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 10),
+                    child: Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Text(
+                            'Rick and Morty',
+                            style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.deepPurple),
+                          ),
+                          const SizedBox(height: 20),
+                          Expanded(
+                            child: ListView.builder(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              itemCount: list.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            spreadRadius: 1,
+                                            blurRadius: 1,
+                                            offset: const Offset(0, 2),
+                                          ),
+                                        ],
+                                      ),
+                                      child: ListTile(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) => DetailPage(
+                                                id: list[index]['id'],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        leading: CircleAvatar(
+                                          radius: 30,
+                                          child: Image(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                  list[index]['image'])),
+                                        ),
+                                        trailing: Text(
+                                          list[index]['species'],
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.purpleAccent,
+                                          ),
+                                        ),
+                                        title: Text(
+                                          '${index + 1}. ${list[index]['name']}',
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.purple,
+                                          ),
+                                        ),
+                                        subtitle: Text(
+                                            'Status: ${list[index]['status']}'),
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                  ],
+                                );
+                              },
                             ),
-                            title: Text('${index + 1}. ${list[index]['name']}'),
-                            subtitle: Text('Status: ${list[index]['status']}'),
-                          );
-                        },
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
+                  )
+                : Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.deepPurple,
+                    ),
+                  ),
           );
         },
       ),

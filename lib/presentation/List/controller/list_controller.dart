@@ -8,12 +8,14 @@ class ListController with ChangeNotifier {
 
   ApiServices _apiServices = ApiServices();
   List<dynamic> listData = [];
+  bool isLoading = false;
 
   void getListData() async {
     try {
       listData = await _apiServices.getListData();
       notifyListeners();
       print('List data: $listData');
+      isLoading = true;
     } catch (e) {
       print('Error: $e');
     }

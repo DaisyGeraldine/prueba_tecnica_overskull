@@ -18,7 +18,10 @@ class LoginPage extends StatelessWidget {
             children: <Widget>[
               const Text(
                 'Iniciar sesión',
-                style: TextStyle(fontSize: 24),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.deepPurple),
               ),
               const SizedBox(height: 20),
               TextFormField(
