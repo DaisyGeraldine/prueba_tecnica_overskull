@@ -1,7 +1,7 @@
 # Prueba Técnica Overskull
 
 Objetivo
-Construir una aplicación móvil (Flutter) que permita:
+Construir una aplicación móvil (Flutter)
 
 
 
