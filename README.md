@@ -1,16 +1,42 @@
-# prueba_tecnica
+# Prueba Técnica Overskull
 
-A new Flutter project.
+Objetivo
+Construir una aplicación móvil (Flutter) que permita:
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Instalación
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+```bash
+  git clone https://github.com/DaisyGeraldine/prueba_tecnica_overskull.git
+
+  flutter run
+```
+    
+## Descripción
+
+Construir una aplicación móvil (Flutter) que permita:
+ -	Iniciar sesión (simulado).
+ - Mostrar una lista de elementos obtenidos desde una API pública.
+ - Navegar a una vista de detalle de cada elemento.
+ - Tener una arquitectura limpia y responsive, con manejo de estados, errores y widgets reutilizables.
+
+## Estructura
+  lib ---| data
+        |  presentacion
+        | widgets
+
+
+## Librerías utilizadas
+
+* http: 1.3.0
+* provider: 6.1.4
+
+
+
+
+## Authors
+
+- [@DaisyGeraldine](https://www.github.com/DaisyGeraldine)
